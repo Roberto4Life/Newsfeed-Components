@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Hello by Adele',
+    date: 'A long time ago',
+    firstParagraph: 'Hello, something Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ekans Lorem ipsum dolor sit amet, consectetur adipiscing',
+    secondParagraph: 'I thought I new the lyrics to this song before I started.',
+    thirdParagraph: 'I just remember the inflection of Hello, and the yell somewhere in the middle',
   }
 ];
 
@@ -112,3 +119,44 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function createNews(title, date, p1, p2, p3){
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleUno = document.createElement('p');
+  const articleDos = document.createElement('p');
+  const articleTres = document.createElement('p');
+  const articleButton = document.createElement('span')
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleButton.classList.add('expandButton')
+
+  article.append(articleTitle);
+  article.append(articleDate);
+  article.append(articleUno);
+  article.append(articleDos);
+  article.append(articleTres);
+  article.append(articleButton);
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleUno.textContent = p1;
+  articleDos.textContent = p2;
+  articleTres.textContent = p3;
+  articleButton.textContent = 'open';
+
+  articleButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.map(data => {
+  articles.append(createNews(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+})
+
+
+
