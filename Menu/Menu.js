@@ -33,6 +33,7 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
 function createMenu (){
   const menu = document.createElement('div');
   const menuAry = document.createElement('ul');
@@ -55,8 +56,9 @@ function createMenu (){
   return menu;
 
 }
-const finalMenu = document.querySelector('.menu-button');
+const finalMenu = document.querySelector('.header');
 
 menuItems.map(data => {
   finalMenu.append(createMenu(data.menuItems));
 })
+
